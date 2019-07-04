@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	editor "github.com/Dm3Ch/go-editor"
+	editor "github.com/dm3ch/go-editor"
 )
 
 func main() {
