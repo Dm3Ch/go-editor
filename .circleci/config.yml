@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  golangci-lint: timakin/golangci-lint@0.1.1
+
+executors:
+  default:
+    docker:
+      - image: golang:1.12
+
+workflows:
+  ci:
+    jobs:
+      - golangci-lint/lint
+      - test
+jobs:
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - run:
+          name: Install gotest
+          command: go get -u github.com/rakyll/gotest
+      - run:
+          name: Run Tests
+          command: gotest -v ./...
